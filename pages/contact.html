@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Responsive Blog Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/blog.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 header">
-                            <h1 class="text-center text-uppercase">blogger</h1>
+                            <h1 class="text-center text-uppercase">Contact Us</h1>
                             <p class="text-center text-capitalize">Lorem ipsum dolor sit amet</p>
                         </div>
                     </div>
@@ -33,38 +33,67 @@
             <div class="header">
                 <div class="sub-header text-capitalize font-weight-bold ">
                     <ul class="left-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="pages/about.html">about</a></li>
-                        <li><a href="pages/addBlog.html">Add Blog</a></li>
+                        <li><a href="about.html">about</a></li>
                     </ul>
                     <div class="logo">
-                        <a href="index.html">NishbruhCodes</a>
+                        <a href="../index.html">NishbruhCodes</a>
                     </div>
                     <ul class="right-menu">
-                        <li><a href="pages/Categories.html">Categories</a></li>
-                        <li><a href="pages/Authors.html">Authors</a></li>
-                        <li><a href="pages/sampleblog.html">sample blog</a></li>
-                        <li><a href="pages/contact.html">contact</a></li>
+                        <li><a href="Categories.html">Categories</a></li>
+                        <li><a href="Authors.html">Authors</a></li>
+                        <li><a href="sampleblog.html">sample blog</a></li>
+                        <li><a href="contact.html">contact</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--blog-->
-    <section id="blog">
+    <!--contact-->
+    <section id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <div id="data-blog-list">
-                        <!-- Dynmic Blog List goes here -->
-
-                    </div>
-                    <div class="submit-btn mt-5">
-                        <button type="submit" class="btn btn-primary float-right font-weight-bold text-capitalize">older
-                            post
-                            &rightarrow;</button>
-                    </div>
+                <div class="col-lg-12 text-center">
+                    <h2 class="contact-heading text-uppercase font-weight-bold">contact us</h2>
+                    <p class="contact-subheading font-italic mt-5">Lorem ipsum dolor sit, amet consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" id="name" placeholder="Your Name *" required
+                                        data-validation-required-message="Please enter your name. *"
+                                        class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="email" placeholder="Your Email-id *" required="required"
+                                        data-validation-required-message="Please enter your email. *"
+                                        class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" id="tel" placeholder="Your phone-no *" required="required"
+                                        data-validation-required-message="Please enter your phone-no. *"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10"
+                                        placeholder="Your Message *" required="required"
+                                        data-validation-required-message="Please enter your message *"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <button type="submit"
+                                    class="btn btn-primary btn-xl text-uppercase font-weight-bold">send
+                                    message</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -109,8 +138,6 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./blogs.js"> </script>
-
     <script>
         $(document).ready(function () {
             $(window).on('scroll', function () {
@@ -120,9 +147,6 @@
                     $(".sub-header").removeClass('active');
                 }
             })
-            let target = 'data-blog-list';
-
-            generateBlogs(target);
         });
     </script>
 </body>
