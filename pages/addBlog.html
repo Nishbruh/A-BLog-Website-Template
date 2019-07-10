@@ -128,13 +128,12 @@
 
 
             document.querySelector("#yolo").addEventListener('click', (e) => {
-
                 var blog = {};
+                //validation goes here!
                 if (!Validatefor3elements('#title', '#category', '#author', '#container',
                         '#form-blog-list')) {
                     return;
                 } else {
-
                     $.each($("#form-blog-list").serializeArray(), function (_, kv) {
                         if (blog.hasOwnProperty(kv.name)) {
                             blog[kv.name] = $.makeArray(blog[kv.name]);
@@ -143,8 +142,7 @@
                             blog[kv.name] = kv.value;
                         }
                     });
-
-                    //validation goes here!
+                    clearance('#title', '#category', '#author', '#description');
                     let _id = new Date().toISOString()
                     blog.id = _id
                     blog.date = new Date().toDateString();

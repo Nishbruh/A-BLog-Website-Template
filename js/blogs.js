@@ -50,7 +50,7 @@ addBlog = (blog, element) => {
     blogs = [...blogs, blog];
     localStorage.setItem('blogs', JSON.stringify(blogs));
     generateBlogs(element);
-    clearance('#title', '#category', '#author', '#description');
+
 }
 Validatefor3elements = (element1, element2, element3, elementx, elementy) => {
     ele1 = document.querySelector(`${element1}`).value;
