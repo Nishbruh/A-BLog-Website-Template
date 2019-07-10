@@ -23,7 +23,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 header">
-                            <h1 class="text-center text-uppercase">blogger</h1>
+                            <h1 class="text-center text-uppercase">Authors</h1>
                             <p class="text-center text-capitalize">Lorem ipsum dolor sit amet</p>
                         </div>
                     </div>
@@ -32,15 +32,14 @@
             <div class="header">
                 <div class="sub-header text-capitalize font-weight-bold ">
                     <ul class="left-menu">
-                        <li><a href="about.html">about</a></li>
                         <li><a href="addBlog.html">Add Blog</a></li>
                     </ul>
                     <div class="logo">
                         <a href="../index.html">NishbruhCodes</a>
                     </div>
                     <ul class="right-menu">
-                        <li><a href="Categories.html">Categories</a></li>
-                        <li><a href="Authors.html">Authors</a></li>
+                        <li><a href="./AddCategories.html">Categories</a></li>
+                        <li><a href="./AddAuthors.html">Authors</a></li>
                         <li><a href="sampleblog.html">sample blog</a></li>
                         <li><a href="contact.html">contact</a></li>
                     </ul>
@@ -48,23 +47,25 @@
             </div>
         </div>
     </section>
-
-    <!--blog-->
-    <section id="author">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <h4 class="catg-head text-capitalize font-weight-bold">Authors</h4>
-                    <div id="data-author-list">
-                        <!-- Dynmic Blog List goes here -->
-
+    <section id="auth">
+        <div class="container-mine" id="container">
+            <form id="form-blog-list-author">
+                <input type="hidden" name="id" id="id" value="0" />
+                <input type="hidden" name="date" id="date" />
+                <div class="form-group">
+                    <h4 class="text-capitalize m-5 text-center display-4">add new Authors</h4>
+                    <!-- <label for="category" class="font-weight-bold h5 mt-5">Authors</label> -->
+                    <div class="row mb-5 p-2">
+                        <input type="text" class="form-control col-9" id="author" name="author"
+                            placeholder="New Author">
+                        <div class="col-1"></div>
+                        <button type="submit" class="btn btn-dark col-2">Add</button>
                     </div>
-                    <div class="submit-btn mt-5">
-                        <button type="submit" class="btn btn-primary float-right font-weight-bold text-capitalize">older
-                            post
-                            &rightarrow;</button>
-                    </div>
-                </div>
+            </form>
+            <div id="data-authors">
+                <ul id="authorul">
+
+                </ul>
             </div>
         </div>
     </section>
@@ -108,8 +109,7 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./authors.js"> </script>
-
+    <script src="../js/authors.js"> </script>
     <script>
         $(document).ready(function () {
             $(window).on('scroll', function () {
@@ -119,9 +119,34 @@
                     $(".sub-header").removeClass('active');
                 }
             })
-            let target = 'data-author-list';
+            let targetauthor = 'authorul';
 
-            generateauthors(target);
+
+            document.querySelector("#form-blog-list-author").addEventListener('submit', (e) => {
+                var blog = {};
+                if (!Validatefor1elements('#author', '#container', 'form', e)) {
+                    return;
+                } else {
+
+                    $.each($("#form-blog-list-author").serializeArray(), function (_, kv) {
+                        if (blog.hasOwnProperty(kv.name)) {
+                            blog[kv.name] = $.makeArray(blog[kv.name]);
+                            blog[kv.name].push(kv.value);
+                        } else {
+                            blog[kv.name] = kv.value;
+                        }
+                    });
+
+                    //validation goes here!
+
+                    let _id = new Date().toISOString()
+                    blog.id = _id
+                    blog.date = new Date().toDateString();
+                    addauthor(blog, targetauthor);
+                }
+            })
+
+            generateauthors(targetauthor);
         });
     </script>
 </body>

@@ -33,7 +33,6 @@
             <div class="header">
                 <div class="sub-header text-capitalize font-weight-bold ">
                     <ul class="left-menu">
-                        <li><a href="index.html">Home</a></li>
                         <li><a href="pages/about.html">about</a></li>
                         <li><a href="pages/addBlog.html">Add Blog</a></li>
                     </ul>
@@ -41,8 +40,8 @@
                         <a href="index.html">NishbruhCodes</a>
                     </div>
                     <ul class="right-menu">
-                        <li><a href="pages/Categories.html">Categories</a></li>
-                        <li><a href="pages/Authors.html">Authors</a></li>
+                        <li><a href="./pages/AddCategories.html">Categories</a></li>
+                        <li><a href="./pages/AddAuthors.html">Authors</a></li>
                         <li><a href="pages/sampleblog.html">sample blog</a></li>
                         <li><a href="pages/contact.html">contact</a></li>
                     </ul>
@@ -61,7 +60,8 @@
 
                     </div>
                     <div class="submit-btn mt-5">
-                        <button type="submit" class="btn btn-primary float-right font-weight-bold text-capitalize">older
+                        <button type="submit"
+                            class="omg btn btn-primary float-right font-weight-bold text-capitalize">older
                             post
                             &rightarrow;</button>
                     </div>
@@ -108,8 +108,7 @@
         </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./blogs.js"> </script>
+
 
     <script>
         $(document).ready(function () {
@@ -121,10 +120,13 @@
                 }
             })
             let target = 'data-blog-list';
+            let target2 = '.omg'
 
             generateBlogs(target);
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/blogs.js"> </script>
 </body>
 
 </html>

@@ -11,6 +11,11 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
+.blogbox #Title h4 {
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
 .blogbox #one {
     margin-bottom: 5px;
 }
@@ -29,7 +34,7 @@
     display: flex;
     align-items: center;
     padding: 5px 10px;
-    background-color: #1ABC9C;
+    background-color: #000;
     color: white;
 }
 
@@ -63,7 +68,7 @@
 }
 
 #author {
-    margin-top: 15px;
+    margin-top: 25px;
     bottom: 0px;
     left: 0px;
     width: 100%;

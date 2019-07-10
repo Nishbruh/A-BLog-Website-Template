@@ -38,8 +38,8 @@
                         <a href="../index.html">NishbruhCodes</a>
                     </div>
                     <ul class="right-menu">
-                        <li><a href="Categories.html">Categories</a></li>
-                        <li><a href="Authors.html">Authors</a></li>
+                        <li><a href="./AddCategories.html">Categories</a></li>
+                        <li><a href="./AddAuthors.html">Authors</a></li>
                         <li><a href="sampleblog.html">sample blog</a></li>
                         <li><a href="contact.html">contact</a></li>
                     </ul>
@@ -47,31 +47,30 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="container">
-            <div class="">
-                <form id="form-blog-list">
-                    <input type="hidden" name="id" id="id" value="0" />
-                    <input type="hidden" name="date" id="date" />
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <input type="text" class="form-control" id="category" name="category" placeholder="Category">
-                    </div>
-                    <div class="form-group">
-                        <label for="author">Author</label>
-                        <input type="text" class="form-control" id="author" name="author" placeholder="Author">
-                    </div>
-                    <div class="form-check">
-                        <label for="categor">Category</label>
-                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
+    <section id="blogger">
+        <div class="container-mine" id="container">
+            <h3 class="text-capitalize display-4 text-center mt-5 pb-2">add new blogs</h3>
+            <form id="form-blog-list" class="mt-5 mb-5">
+                <input type="hidden" name="id" id="id" value="0" />
+                <input type="hidden" name="date" id="date" />
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Category">
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Author">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                </div>
+                <button type="button" id="yolo" class="btn btn-dark">Submit</button>
+            </form>
         </div>
     </section>
     <section id="footer">
@@ -114,7 +113,7 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./blogs.js"> </script>
+    <script src="../js/blogs.js"> </script>
     <script>
         $(document).ready(function () {
             $(window).on('scroll', function () {
@@ -125,35 +124,37 @@
                 }
             })
             let target = 'data-blog-list ';
-            let targetcatg = 'data-catg-list';
-            let targetauthor = 'data-author-list';
 
 
-            document.querySelector("#form-blog-list").addEventListener('submit', (e) => {
-                e.preventDefault();
+
+            document.querySelector("#yolo").addEventListener('click', (e) => {
+
                 var blog = {};
-                $.each($("#form-blog-list").serializeArray(), function (_, kv) {
-                    if (blog.hasOwnProperty(kv.name)) {
-                        blog[kv.name] = $.makeArray(blog[kv.name]);
-                        blog[kv.name].push(kv.value);
-                    } else {
-                        blog[kv.name] = kv.value;
-                    }
-                });
+                if (!Validatefor3elements('#title', '#category', '#author', '#container',
+                        '#form-blog-list')) {
+                    return;
+                } else {
 
-                //validation goes here!
+                    $.each($("#form-blog-list").serializeArray(), function (_, kv) {
+                        if (blog.hasOwnProperty(kv.name)) {
+                            blog[kv.name] = $.makeArray(blog[kv.name]);
+                            blog[kv.name].push(kv.value);
+                        } else {
+                            blog[kv.name] = kv.value;
+                        }
+                    });
 
-                let _id = new Date().toISOString()
-                blog.id = _id
-                blog.date = new Date().toISOString();
-                addBlog(blog, target);
-                addcatg(blog, targetcatg);
-                addauthor(blog, targetauthor);
+                    //validation goes here!
+                    let _id = new Date().toISOString()
+                    blog.id = _id
+                    blog.date = new Date().toDateString();
+                    addBlog(blog, target);
+
+                }
+
             })
         });
     </script>
 </body>
 
 </html>
-
-category author

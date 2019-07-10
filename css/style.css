@@ -92,7 +92,7 @@
     font-size: 30px;
     left: 50%;
     transform: translateX(-50%);
-    transition: 1s ease;
+    transition: 0.5s ease;
     text-decoration: none;
     color: #fff;
     top: 15px;
@@ -102,7 +102,6 @@
     font-size: 25px;
     top: 8px;
     color: #fff;
-    display: none;
 }
 
 #navigation .sub-header .right-menu {
@@ -289,34 +288,10 @@
     font-size: 20px;
 }
 
-#catg .container #data-catg-list {
-    margin-top: 20px
-}
-
-#catg .container h4 {
-    font-size: 24;
-    padding: 20px 0px;
-}
-
-#catg .container #data-catg-list ul li {
-    list-style: none;
-    font-size: 18px;
-
-}
-
-#author .container #data-author-list {
-    margin-top: 20px;
-}
-
-#author .container h4 {
-    font-size: 24;
-    padding: 20px 0px;
-}
-
-#author .container #data-author-list ul li {
-    list-style: none;
-    font-size: 18px;
-
+/* form-design */
+.container-mine {
+    width: 50%;
+    margin: auto;
 }
 
 /* contact */
@@ -347,8 +322,9 @@
 }
 
 ::placeholder {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 16px;
+    font-style: italic;
+    /* font-weight: bold; */
 }
 
 #contact .container .form-group {
@@ -373,4 +349,46 @@
 #footer .container span {
     color: #000;
     font-size: 30px;
+}
+
+
+
+/* styling category list */
+#catg .container-mine #data-categories ul {
+    list-style: none;
+    margin: 0;
+    border: solid rgba(0, 0, 0, 0.3) 2px;
+    border-radius: 5px;
+}
+
+
+#catg .container-mine #data-categories #catgul li {
+    list-style-type: square;
+    list-style-position: outside;
+    border-bottom: solid rgba(0, 0, 0, 0.3) 2px;
+    padding: 20px 15px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* styling the author list */
+#auth .container-mine #data-authors ul {
+    list-style: none;
+    margin: 0;
+    border: solid rgba(0, 0, 0, 0.3) 2px;
+    border-radius: 5px;
+}
+
+#auth .container-mine #data-authors #authorul li {
+    list-style-type: decimal;
+    list-style-position: outside;
+    border-bottom: solid rgba(0, 0, 0, 0.3) 2px;
+    padding: 20px 15px;
+    font-size: 20px;
+    font-weight: 500
+}
+
+#blogger .container-mine #form-blog-list label {
+    font-weight: 500;
+    font-size: 20px
 }

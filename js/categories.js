@@ -9,10 +9,7 @@ generatecatg = (catg) => {
     if (catg) {
 
         html = `
-        <ul id="catgul">
             <li id="${catg.id}">${catg.category}</li>
-            <hr>
-        </ul>
         `;
     }
     return html
@@ -34,4 +31,23 @@ addcatg = (catg, element) => {
     categories = [...categories, catg];
     localStorage.setItem('category', JSON.stringify(categories));
     generatecategories(element);
+}
+
+Validatefor1elements = (element1, elementx, elementy, e) => {
+    ele1 = document.querySelector(`${element1}`).value;
+    elex = document.querySelector(`${elementx}`);
+    eley = document.querySelector(`${elementy}`);
+    if (ele1 == '') {
+        e.preventDefault();
+        let div = document.createElement('div');
+        div.className = 'yoyo';
+        div.appendChild(document.createTextNode('Plz enter all the fields'));
+        elex.insertBefore(div, eley);
+        console.log(div);
+        setTimeout(() => document.querySelector('.yoyo').remove(), 3000);
+        return false;
+    }
+    return true;
+
+
 }

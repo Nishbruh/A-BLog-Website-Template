@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Responsive Blog Website</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -24,7 +23,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 header">
-                            <h1 class="text-center text-uppercase">Contact Us</h1>
+                            <h1 class="text-center text-uppercase">Categories</h1>
                             <p class="text-center text-capitalize">Lorem ipsum dolor sit amet</p>
                         </div>
                     </div>
@@ -33,7 +32,7 @@
             <div class="header">
                 <div class="sub-header text-capitalize font-weight-bold ">
                     <ul class="left-menu">
-                        <li><a href="about.html">about</a></li>
+                        <li><a href="addBlog.html">Add Blog</a></li>
                     </ul>
                     <div class="logo">
                         <a href="../index.html">NishbruhCodes</a>
@@ -48,53 +47,26 @@
             </div>
         </div>
     </section>
+    <section id="catg">
+        <div class="container-mine" id="container">
+            <form id="form-blog-list-catg">
+                <input type="hidden" name="id" id="id" value="0" />
+                <input type="hidden" name="date" id="date" />
+                <div class="form-group">
+                    <h4 class="text-capitalize m-5 text-center display-4">add new categories</h4>
+                    <!-- <label for="category" class="font-weight-bold h5 mt-5">Category</label> -->
+                    <div class="row mb-5 p-2">
+                        <input type="text" class="form-control col-9" id="category" name="category"
+                            placeholder="New Category">
+                        <div class="col-1"></div>
+                        <button type="submit" class="btn btn-dark col-2">Add</button>
+                    </div>
+                </div>
+            </form>
+            <div id="data-categories">
+                <ul id="catgul">
 
-    <!--contact-->
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="contact-heading text-uppercase font-weight-bold">contact us</h2>
-                    <p class="contact-subheading font-italic mt-5">Lorem ipsum dolor sit, amet consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form action="">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" id="name" placeholder="Your Name *" required
-                                        data-validation-required-message="Please enter your name. *"
-                                        class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="email" placeholder="Your Email-id *" required="required"
-                                        data-validation-required-message="Please enter your email. *"
-                                        class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" id="tel" placeholder="Your phone-no *" required="required"
-                                        data-validation-required-message="Please enter your phone-no. *"
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10"
-                                        placeholder="Your Message *" required="required"
-                                        data-validation-required-message="Please enter your message *"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <button type="submit"
-                                    class="btn btn-primary btn-xl text-uppercase font-weight-bold">send
-                                    message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                </ul>
             </div>
         </div>
     </section>
@@ -138,6 +110,7 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../js/categories.js"> </script>
     <script>
         $(document).ready(function () {
             $(window).on('scroll', function () {
@@ -147,6 +120,35 @@
                     $(".sub-header").removeClass('active');
                 }
             })
+            let targetcatg = 'catgul';
+
+
+            document.querySelector("#form-blog-list-catg").addEventListener('submit', (e) => {
+
+                var blog = {};
+                if (!Validatefor1elements('#category', '#container', 'form', e)) {
+                    return;
+                } else {
+
+                    $.each($("#form-blog-list-catg").serializeArray(), function (_, kv) {
+                        if (blog.hasOwnProperty(kv.name)) {
+                            blog[kv.name] = $.makeArray(blog[kv.name]);
+                            blog[kv.name].push(kv.value);
+                        } else {
+                            blog[kv.name] = kv.value;
+                        }
+                    });
+
+                    //validation goes here!
+
+                    let _id = new Date().toISOString()
+                    blog.id = _id
+                    blog.date = new Date().toDateString();
+                    addcatg(blog, targetcatg);
+                }
+            })
+
+            generatecategories(targetcatg);
         });
     </script>
 </body>

@@ -1,4 +1,4 @@
-let authors = localStorage.getItem('blogs') ? JSON.parse(localStorage.getItem('blogs')) : [];
+let authors = localStorage.getItem('authors') ? JSON.parse(localStorage.getItem('authors')) : [];
 
 getauthors = () => {
     return authors
@@ -9,10 +9,7 @@ generateauthor = (author) => {
     if (author) {
 
         html = `
-        <ul id="authorul">
             <li id="${author.id}">${author.author}</li>
-            <hr>
-        </ul>
         `;
     }
     return html
@@ -32,6 +29,24 @@ generateauthors = (element) => {
 addauthor = (author, element) => {
     var authors = getauthors();
     authors = [...authors, author];
-    localStorage.setItem('blogs', JSON.stringify(authors));
+    localStorage.setItem('authors', JSON.stringify(authors));
     generateauthors(element);
+}
+Validatefor1elements = (element1, elementx, elementy, e) => {
+    ele1 = document.querySelector(`${element1}`).value;
+    elex = document.querySelector(`${elementx}`);
+    eley = document.querySelector(`${elementy}`);
+    if (ele1 == '') {
+        e.preventDefault();
+        let div = document.createElement('div');
+        div.className = 'yoyo';
+        div.appendChild(document.createTextNode('Plz enter all the fields'));
+        elex.insertBefore(div, eley);
+        console.log(div);
+        setTimeout(() => document.querySelector('.yoyo').remove(), 3000);
+        return false;
+    }
+    return true;
+
+
 }
