@@ -363,8 +363,8 @@
 
 
 #catg .container-mine #data-categories #catgul li {
-    list-style-type: square;
-    list-style-position: outside;
+    list-style-type: none;
+
     border-bottom: solid rgba(0, 0, 0, 0.3) 2px;
     padding: 20px 15px;
     font-size: 20px;
@@ -380,8 +380,7 @@
 }
 
 #auth .container-mine #data-authors #authorul li {
-    list-style-type: decimal;
-    list-style-position: outside;
+    list-style-type: none;
     border-bottom: solid rgba(0, 0, 0, 0.3) 2px;
     padding: 20px 15px;
     font-size: 20px;

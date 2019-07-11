@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -53,14 +51,16 @@
                 <input type="hidden" name="id" id="id" value="0" />
                 <input type="hidden" name="date" id="date" />
                 <div class="form-group">
-                    <h4 class="text-capitalize m-5 text-center display-4">add new Authors</h4>
-                    <!-- <label for="category" class="font-weight-bold h5 mt-5">Authors</label> -->
-                    <div class="row mb-5 p-2">
-                        <input type="text" class="form-control col-sm-8" id="author" name="author"
+                    <h4 class=" text-capitalize m-5 text-center display-4">add new authors</h4>
+                    <!-- <label for="category" class="font-weight-bold h5 mt-5">Category</label> -->
+                    <div class=" forerror1 row"></div>
+                    <div class="forerror2 row mb-5 p-2">
+                        <input type="text" class=" form-control col-sm-8 col-lg-9 " id="author" name="author"
                             placeholder="New Author">
-                        <div class="col-1"></div>
-                        <button type="submit" class="btn btn-dark col-sm-2">Add</button>
+                        <div class=" col-sm-1 "></div>
+                        <button type="button" id="authorbtn" class="btn btn-dark  col-sm-2 col-lg-2">Add</button>
                     </div>
+                </div>
             </form>
             <div id="data-authors">
                 <ul id="authorul">
@@ -108,8 +108,10 @@
         </div>
     </section>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../js/authors.js"> </script>
     <script>
         $(document).ready(function () {
             $(window).on('scroll', function () {
@@ -119,12 +121,14 @@
                     $(".sub-header").removeClass('active');
                 }
             })
-            let targetauthor = 'authorul';
+            let targetcatg = 'catgul';
 
 
-            document.querySelector("#form-blog-list-author").addEventListener('submit', (e) => {
+            document.querySelector("#authorbtn").addEventListener('click', () => {
+
                 var blog = {};
-                if (!Validatefor1elements('#author', '#container', 'form', e)) {
+
+                if (!Validatefor1elements('#author', '.forerror1', '#forerror2')) {
                     return;
                 } else {
 
@@ -137,18 +141,30 @@
                         }
                     });
 
-                    //validation goes here!
-
                     let _id = new Date().toISOString()
                     blog.id = _id
                     blog.date = new Date().toDateString();
-                    addauthor(blog, targetauthor);
-                }
-            })
+                    addtolocal(blog);
 
-            generateauthors(targetauthor);
+
+                    if (document.querySelector('#empity')) {
+
+                        document.querySelector('#empity').remove();
+                    }
+                    generatedata(blog);
+                    clearance('#author');
+
+                }
+
+
+
+            })
+            displaydata();
         });
     </script>
+
 </body>
+
+<script src="../js/authors.js"> </script>
 
 </html>
