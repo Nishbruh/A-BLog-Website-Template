@@ -33,15 +33,14 @@ displaydata = () => {
 }
 
 // Validation
-Validatefor1elements = (element1, elementx, elementy) => {
+Validatefor1elements = (element1, elementx) => {
     ele1 = document.querySelector(`${element1}`).value;
     elex = document.querySelector(`${elementx}`);
-    eley = document.querySelector(`${elementy}`);
     if (ele1 == '') {
         let div = document.createElement('div');
         div.className = 'yoyo display-block';
         div.appendChild(document.createTextNode('Plz enter all the fields'));
-        elex.insertBefore(div, eley);
+        elex.appendChild(div);
         setTimeout(() => document.querySelector('.yoyo').remove(), 3000);
         return false;
     }

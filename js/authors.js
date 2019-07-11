@@ -11,6 +11,7 @@ addtolocal = (info) => {
     localStorage.setItem('authors', JSON.stringify(data));
 }
 
+// Generate data directly from form
 generatedata = (info) => {
     data = document.createElement('li');
     data.appendChild(document.createTextNode(`${info.author}`));
@@ -18,6 +19,7 @@ generatedata = (info) => {
 
 }
 
+// displays data present in the local storage
 displaydata = () => {
     let data = getfromlocal();
     if (data.length < 1) {
@@ -33,22 +35,22 @@ displaydata = () => {
 }
 
 // Validation
-Validatefor1elements = (element1, elementx, elementy) => {
+Validatefor1elements = (element1, elementx) => {
     ele1 = document.querySelector(`${element1}`).value;
     elex = document.querySelector(`${elementx}`);
-    eley = document.querySelector(`${elementy}`);
+
     if (ele1 == '') {
         let div = document.createElement('div');
         div.className = 'yoyo display-block';
         div.appendChild(document.createTextNode('Plz enter all the fields'));
-        elex.insertBefore(div, eley);
+        elex.appendChild(div);
         setTimeout(() => document.querySelector('.yoyo').remove(), 3000);
         return false;
     }
     return true;
-
-
 }
+
+// clear all the fields after input
 clearance = (element1, element2, element3, element4) => {
     document.querySelector(`${element1}`).value = '';
     document.querySelector(`${element2}`).value = '';

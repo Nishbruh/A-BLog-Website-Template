@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -23,8 +21,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 header">
-                            <h1 class="text-center text-uppercase">Categories</h1>
-                            <p class="text-center text-capitalize">Lorem ipsum dolor sit amet</p>
+                            <h1 class="text-center text-uppercase">blogger</h1>
+                            <p class="text-center text-capitalize">Start Blogging</p>
                         </div>
                     </div>
                 </div>
@@ -32,15 +30,14 @@
             <div class="header">
                 <div class="sub-header text-capitalize font-weight-bold ">
                     <ul class="left-menu">
-                        <li><a href="about.html">about</a></li>
-                        <li><a href="addBlog.html">Add Blog</a></li>
+                        <li><a href="./blogstext.js">Add Blog</a></li>
                     </ul>
                     <div class="logo">
                         <a href="../index.html">NishbruhCodes</a>
                     </div>
                     <ul class="right-menu">
-                        <li><a href="Categories.html">Categories</a></li>
-                        <li><a href="Authors.html">Authors</a></li>
+                        <li><a href="./AddCategories.html">Categories</a></li>
+                        <li><a href="./AddAuthors.html">Authors</a></li>
                         <li><a href="sampleblog.html">sample blog</a></li>
                         <li><a href="contact.html">contact</a></li>
                     </ul>
@@ -48,25 +45,32 @@
             </div>
         </div>
     </section>
-
-    <!--Categories-->
-    <section id="catg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <h4 class="catg-head text-capitalize font-weight-bold">Categories</h4>
-                    <div id="data-catg-list">
-
-                        <!-- Dynmic Categories List goes here -->
-
-                    </div>
-                    <div class="submit-btn mt-5">
-                        <button type="submit" class="btn btn-primary float-right font-weight-bold text-capitalize">older
-                            post
-                            &rightarrow;</button>
-                    </div>
+    <section id="blogger">
+        <div class="container-mine" id="container">
+            <h3 class="text-capitalize display-4 text-center mt-5 pb-2">add new blogs</h3>
+            <form id="form-blog-list" class="mt-5 mb-5">
+                <input type="hidden" name="id" id="id" value="0" />
+                <input type="hidden" name="date" id="date" />
+                <div class="forerror1"></div>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
                 </div>
-            </div>
+                <div class=" form-group">
+                    <div class="row"></div>
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Category">
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Author">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                </div>
+                <button type="button" id="yolo" class="btn btn-dark">Submit</button>
+            </form>
         </div>
     </section>
     <section id="footer">
@@ -107,10 +111,10 @@
             </div>
         </div>
     </section>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../js/categories.js"> </script>
-
     <script>
         $(document).ready(function () {
             $(window).on('scroll', function () {
@@ -120,11 +124,48 @@
                     $(".sub-header").removeClass('active');
                 }
             })
-            let target = 'data-catg-list';
 
-            generatecategories(target);
+
+
+            document.querySelector("#yolo").addEventListener('click', () => {
+
+                var blog = {};
+
+                if (!Validatefor3elements('#title', '#category', '#author', '.forerror1')) {
+                    return;
+                } else {
+
+                    $.each($("#form-blog-list").serializeArray(), function (_, kv) {
+                        if (blog.hasOwnProperty(kv.name)) {
+                            blog[kv.name] = $.makeArray(blog[kv.name]);
+                            blog[kv.name].push(kv.value);
+                        } else {
+                            blog[kv.name] = kv.value;
+                        }
+                    });
+
+                    let _id = new Date().toISOString()
+                    blog.id = _id
+                    blog.date = new Date().toDateString();
+                    addtolocal(blog);
+
+
+                    if (document.querySelector('#empity')) {
+
+                        document.querySelector('#empity').remove();
+                    }
+                    clearance('#title', '#category', '#author');
+
+                }
+
+
+
+            })
         });
     </script>
+
 </body>
+
+<script src="./blogstext.js"> </script>
 
 </html>
