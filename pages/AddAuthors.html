@@ -121,10 +121,16 @@
                     $(".sub-header").removeClass('active');
                 }
             })
-            let targetcatg = 'catgul';
 
+            document.querySelector("#author").addEventListener('keydown', function (event) {
 
-            document.querySelector("#authorbtn").addEventListener('click', () => {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    captureauthor();
+                }
+            })
+
+            document.querySelector("#authorbtn").addEventListener('click', captureauthor = () => {
 
                 var blog = {};
 

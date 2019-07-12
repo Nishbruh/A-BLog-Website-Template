@@ -30,7 +30,7 @@
             <div class="header">
                 <div class="sub-header text-capitalize font-weight-bold ">
                     <ul class="left-menu">
-                        <li><a href="./blogstext.js">Add Blog</a></li>
+                        <li><a href="./addBlog.html">Add Blog</a></li>
                     </ul>
                     <div class="logo">
                         <a href="../index.html">NishbruhCodes</a>
@@ -54,7 +54,7 @@
                 <div class="forerror1"></div>
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
+                    <input type="text" class="form-control " id="title" name="title" placeholder="Enter Title">
                 </div>
                 <div class=" form-group">
                     <div class="row"></div>
@@ -126,8 +126,34 @@
             })
 
 
+            document.querySelector('#title').addEventListener('keydown', function (
+                event) {
 
-            document.querySelector("#yolo").addEventListener('click', () => {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    captureblog();
+                }
+            })
+            document.querySelector('#category').addEventListener('keydown', function (
+                event) {
+
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    captureblog();
+                }
+            })
+            document.querySelector('#author').addEventListener('keydown', function (
+                event) {
+
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    captureblog();
+                }
+            })
+
+
+
+            document.querySelector("#yolo").addEventListener('click', captureblog = () => {
 
                 var blog = {};
 
