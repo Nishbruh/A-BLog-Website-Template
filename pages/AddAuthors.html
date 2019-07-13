@@ -121,6 +121,11 @@
                     $(".sub-header").removeClass('active');
                 }
             })
+            document.addEventListener('click', (e) => {
+                notdisplaydata(e.target);
+                delfromlocal(e.target.getAttribute('id'));
+                displaywhenclicked(e);
+            })
 
             document.querySelector("#author").addEventListener('keydown', function (event) {
 

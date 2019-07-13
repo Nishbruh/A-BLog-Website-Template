@@ -13,8 +13,8 @@ addtolocal = (info) => {
 
 generatedata = (info, element) => {
     data = document.createElement('div');
-    data.id = 'blog-list';
-    data.innerHTML = ` <div class="blogbox" id="${info.id}">
+    data.id = `${info.id}`;
+    data.innerHTML = ` <div class="blogbox" >
     <div id="headwrap">
         <div id="category">
             <h4>${info.category}</h4>
@@ -26,13 +26,13 @@ generatedata = (info, element) => {
     <div id="Title">
         <h4 class="text-uppercase font-weight-bold">${info.title}</h4>
     </div>
-<div id="description">
-    <p>${info.description}</p>
-</div>
-<div id="author">
-    <p>posted by ${info.author}</p>
-</div>
-</div>`;
+    <div id="description">
+        <p>${info.description}</p>
+    </div>
+    <div id="author">
+        <p>posted by ${info.author}</p>
+    </div>
+    </div>`;
     document.querySelector(`${element}`).appendChild(data);
 
 }

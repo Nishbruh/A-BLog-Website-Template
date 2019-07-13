@@ -54,7 +54,7 @@
                     <h4 class=" text-capitalize m-5 text-center display-4">add new categories</h4>
                     <!-- <label for="category" class="font-weight-bold h5 mt-5">Category</label> -->
                     <div class=" forerror1 row"></div>
-                    <div class="forerror2 row mb-5 p-2">
+                    <div class=" row mb-5 p-2">
                         <input type="text" class=" form-control col-sm-8 col-lg-9 " id="category" name="category"
                             placeholder="New Category">
                         <div class=" col-sm-1 "></div>
@@ -120,6 +120,12 @@
                 } else {
                     $(".sub-header").removeClass('active');
                 }
+            })
+
+            document.addEventListener('click', (e) => {
+                notdisplaydata(e.target);
+                delfromlocal(e.target.getAttribute('id'));
+                displaywhenclicked(e);
             })
 
             document.querySelector("#category").addEventListener('keydown', function (event) {

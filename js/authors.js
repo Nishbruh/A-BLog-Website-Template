@@ -11,24 +11,62 @@ addtolocal = (info) => {
     localStorage.setItem('authors', JSON.stringify(data));
 }
 
+delfromlocal = (id) => {
+    let data = getfromlocal();
+    data.forEach((info, index) => {
+        if (id === info.id) {
+            data.splice(index, 1);
+        }
+    });
+    localStorage.setItem('authors', JSON.stringify(data));
+
+}
+
 // Generate data directly from form
 generatedata = (info) => {
     data = document.createElement('li');
+    data.id = `${info.id}`;
+    data.className = 'd-flex justify-content-between';
+    span = document.createElement('button');
+    span.id = `${info.id}`;
+    // span.className = ' cross badge badge-danger d-flex pl-2 pr-2 cursor-pointer';
+    span.className = ' cross btn btn-danger d-flex justify-content-center align-items-center pr-2 pl-2 pt-0';
+    span.appendChild(document.createTextNode('x'));
     data.appendChild(document.createTextNode(`${info.author}`));
+    data.appendChild(span);
     document.querySelector('#authorul').appendChild(data);
 
+}
+
+notdisplaydata = (el) => {
+    if (el.classList.contains('cross')) {
+        el.parentElement.remove();
+    }
+}
+
+displayempty = () => {
+    let First = document.querySelector('#authorul');
+    let empty = document.createElement('div');
+    empty.id = 'empity';
+    empty.appendChild(document.createTextNode('No items'));
+    First.appendChild(empty);
+    return;
+}
+
+displaywhenclicked = (e) => {
+    if (e.target.classList.contains('cross')) {
+        let data = getfromlocal();
+        if (data.length < 1) {
+            displayempty();
+        }
+    }
 }
 
 // displays data present in the local storage
 displaydata = () => {
     let data = getfromlocal();
     if (data.length < 1) {
-        let First = document.querySelector('#authorul');
-        let empty = document.createElement('div');
-        empty.id = 'empity';
-        empty.appendChild(document.createTextNode('No items'));
-        First.appendChild(empty);
-        return;
+        displayempty();
     } else {
         data.forEach((info) => generatedata(info));
     }
